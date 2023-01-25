@@ -1,8 +1,8 @@
-using ETýcaretAPI.Persistance;
+using ETÃ½caretAPI.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//// Add services to the container.
+//// Add services to the container. shoopping
 //builder.Services.AddPersistenceServices();
 
 builder.Services.AddControllers();
@@ -25,5 +25,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//string aaa= Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/ETýcaretAPI.API");
+//string aaa= Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/ETÃ½caretAPI.API");
 app.Run();
