@@ -14,7 +14,7 @@ namespace ETıcaretAPI.Persistance
             get
             {
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../ETıcaretAPI/ETıcaretAPI.API"));sdbsb
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../ETıcaretAPI/ETıcaretAPI.API"));//
                 
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager.GetConnectionString("SQLSERVER");
