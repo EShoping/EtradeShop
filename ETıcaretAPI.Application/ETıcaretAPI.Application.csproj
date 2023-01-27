@@ -18,8 +18,4 @@
     <ProjectReference Include="..\ETıcaretAPI.Domain\ETıcaretAPI.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Customer\" />
-  </ItemGroup>
-
 </Project>
