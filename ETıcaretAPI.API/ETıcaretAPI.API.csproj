@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ETıcaretAPI.Domain\ETıcaretAPI.Domain.csproj" />
     <ProjectReference Include="..\ETıcaretAPI.Persistance\ETıcaretAPI.Persistance.csproj" />
   </ItemGroup>
 
