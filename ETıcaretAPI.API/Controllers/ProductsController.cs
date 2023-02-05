@@ -80,7 +80,17 @@ namespace ETıcaretAPI.API.Controllers
             return StatusCode((int)HttpStatusCode.Created);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Put(VM_Update_Product model)
+        {
+            Product product = await _productReadRepository.GetByIdAsync(model.Id);
+            product.Stock = model.Stock;
+            product.Name = model.Name;
+            product.Price = model.Price;
+            await _productWriteRepository.SaveAsync();
+            return Ok();
 
+        }
 
     }
 }
