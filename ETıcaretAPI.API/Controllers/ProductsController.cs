@@ -1,8 +1,10 @@
 ﻿using ETıcaretAPI.Application.Repositories;
+using ETıcaretAPI.Application.ViewModels.Products;
 using ETıcaretAPI.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using System.Net;
 using System.Net.WebSockets;
 
 namespace ETıcaretAPI.API.Controllers
@@ -13,37 +15,61 @@ namespace ETıcaretAPI.API.Controllers
     {
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
+        //private readonly IOrderWriteRepository _orderWriteRepository;
+        //private readonly ICustomerWriteRepository _customerWriteRepository;
 
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IOrderWriteRepository orderWriteRepository, ICustomerWriteRepository customerWriteRepository)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
+            //_orderWriteRepository = orderWriteRepository;
+            //_customerWriteRepository = customerWriteRepository;
         }
 
         [HttpGet]
-        public async Task Get()
+        public async Task<IActionResult> Get()
         {
             //await _productWriteRepository.AddRangeAsync(new()
             //{
-            //    //new(){Id=Guid.NewGuid(), Name="Product 1", Price=100, CreatedDate=DateTime.UtcNow, Stock=10},
-            //    //new(){Id=Guid.NewGuid(), Name="Product 2", Price=200, CreatedDate=DateTime.UtcNow, Stock=20},
-            //    //new(){Id=Guid.NewGuid(), Name="Product 3", Price=300, CreatedDate=DateTime.UtcNow, Stock=30}
+            //    new(){Id=Guid.NewGuid(), Name="Product 4", Price=100, CreatedDate=DateTime.UtcNow, Stock=10},
+            //    new(){Id=Guid.NewGuid(), Name="Product 5", Price=200, CreatedDate=DateTime.UtcNow, Stock=20},
+            //    new(){Id=Guid.NewGuid(), Name="Product 6", Price=300, CreatedDate=DateTime.UtcNow, Stock=30}
 
-            //    
-            //});
-            Product p = await _productReadRepository.GetByIdAsync("8018d3d8-09a5-4a9d-9769-1da8b136b920");
-            p.Name = "Sema";
-            var count = await _productWriteRepository.SaveAsync();
+
+            //    });
+            //Product p = await _productReadRepository.GetByIdAsync("8018d3d8-09a5-4a9d-9769-1da8b136b920");
+            //p.Name = "Sema";
+            //var count = await _productWriteRepository.SaveAsync();
+            //await _productWriteRepository.AddAsync(new() { Name="C Product", Price= 1500F, Stock=10, CreatedDate= DateTime.UtcNow });
+            //await _productWriteRepository.SaveAsync();
+            /*var customerId = Guid.NewGuid();
+            await _customerWriteRepository.AddAsync(new() { Name = "SemaNur", Id= customerId });*/
+            //await _orderWriteRepository.AddAsync(new() { Description = "bla bla bla", Address = "Ankara "});
+            //await _orderWriteRepository.AddAsync(new() { Description = "bla bla bla 2", Address = "Ankara Pursaklar" });
+            //await _orderWriteRepository.SaveAsync();
+            //await _customerWriteRepository.SaveAsync();
+            return Ok(_productReadRepository.GetAll(false));
         }
+
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(string id)
+        //{
+        //    //IActionResult kullanma nedeni: Her tipte veri dönderir eğer döndereceğin
+        //    //veri tipi belli değilse IActionResult kullanılmalıdır.
+        //    Product product = await _productReadRepository.GetByIdAsync(id);
+        //    return Ok(product);
+        //}
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            //IActionResult kullanma nedeni: Her tipte veri dönderir eğer döndereceğin
-            //veri tipi belli değilse IActionResult kullanılmalıdır.
-            Product product = await _productReadRepository.GetByIdAsync(id);
-            return Ok(product);
+            return  Ok(await _productReadRepository.GetByIdAsync(id,false));
+           
         }
+
+
+
+        
 
     }
 }
