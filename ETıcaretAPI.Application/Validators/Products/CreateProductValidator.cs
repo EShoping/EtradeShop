@@ -20,6 +20,12 @@ namespace ETıcaretAPI.Application.Validators.Products
                 .MinimumLength(5)
                 .WithMessage("Lütfen ürün adını 5 ile 150 karakter arasında giriniz.");
 
+            RuleFor(p => p.Stock)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Lütfen stok bilgisini boş geçmeyiniz.")
+                .Must(s => s >= 0)
+                .WithMessage("Stok bilgisi negatif olamaz.");
 
         }
 
