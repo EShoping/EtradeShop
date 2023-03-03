@@ -27,6 +27,15 @@ namespace ETıcaretAPI.Application.Validators.Products
                 .Must(s => s >= 0)
                 .WithMessage("Stok bilgisi negatif olamaz.");
 
+
+            RuleFor(p => p.Price)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Lütfen fiyat bilgisini boş geçmeyiniz.")
+                .Must(s => s >= 0)
+                .WithMessage("Fiyat bilgisi negatif olamaz.");
+
+
         }
 
     }
