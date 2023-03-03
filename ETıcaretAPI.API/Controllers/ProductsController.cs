@@ -98,7 +98,7 @@ namespace ETıcaretAPI.API.Controllers
             await _productWriteRepository.RemoveAsync(id);
             await _productWriteRepository.SaveAsync();
             return Ok();
-        }
+        } 
 
 
     }

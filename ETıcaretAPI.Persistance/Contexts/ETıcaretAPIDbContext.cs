@@ -36,6 +36,7 @@ namespace ETıcaretAPI.Persistance.Contexts
                 {
                     EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
                     EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow,
+                    _ => DateTime.UtcNow
                    
                 };//_ yazma nedeni: Burada istenilen data üzerinde işlem yapılmayacağı için herhangi bir değişkene atamaya gerek yok
             }
